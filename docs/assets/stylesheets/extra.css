@@ -1,0 +1,194 @@
+/* ---------------------------------------------------------------
+   Brand. Change these two and the whole site follows.
+   --------------------------------------------------------------- */
+:root {
+  --ek-brand:  #0d634e;
+  --ek-accent: #5ba888;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        var(--ek-brand);
+  --md-primary-fg-color--light: #14846a;
+  --md-primary-fg-color--dark:  #084435;
+  --md-accent-fg-color:         #0f7a5f;
+  --md-typeset-a-color:         #0f7a5f;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #0f7a5f;
+  --md-primary-fg-color--light: #2ba184;
+  --md-primary-fg-color--dark:  #084435;
+  --md-accent-fg-color:         var(--ek-accent);
+  --md-typeset-a-color:         var(--ek-accent);
+  --md-hue: 205;
+}
+
+/* ---------------------------------------------------------------
+   Landing hero
+   --------------------------------------------------------------- */
+.ek-hero {
+  margin: 0 0 3rem;
+  padding: 3rem 0 2.5rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+.ek-hero h1 {
+  font-size: 2.6rem;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 .6rem;
+}
+.ek-hero p {
+  font-size: .92rem;
+  max-width: 34rem;
+  color: var(--md-default-fg-color--light);
+  margin: 0 0 1.6rem;
+}
+.ek-eyebrow {
+  display: inline-block;
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--md-primary-fg-color);
+  margin-bottom: 1rem;
+}
+
+/* ---------------------------------------------------------------
+   HTTP method badges
+   --------------------------------------------------------------- */
+.ek-m {
+  display: inline-block;
+  min-width: 3.6em;
+  padding: .1em .55em;
+  border-radius: .2rem;
+  font-family: var(--md-code-font-family);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-align: center;
+  color: #fff;
+  vertical-align: .12em;
+}
+.ek-m.get    { background: #1565c0; }
+.ek-m.post   { background: #2e7d32; }
+.ek-m.put    { background: #ef6c00; }
+.ek-m.delete { background: #c62828; }
+
+.ek-path {
+  font-family: var(--md-code-font-family);
+  font-size: .72rem;
+  font-weight: 600;
+}
+
+/* Auth chip that sits next to an endpoint heading */
+.ek-auth {
+  display: inline-block;
+  padding: .06em .5em;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 1rem;
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+  vertical-align: .18em;
+}
+
+/* ---------------------------------------------------------------
+   Cards, tables, diagrams
+   --------------------------------------------------------------- */
+.md-typeset .grid.cards > ul > li {
+  border-radius: .3rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-primary-fg-color);
+  box-shadow: 0 .2rem .8rem rgba(0, 0, 0, .08);
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--md-default-fg-color--lightest);
+  font-weight: 600;
+}
+
+.md-typeset .mermaid {
+  margin: 1.6em auto;
+}
+
+/* Placeholder frame for screenshots that have not landed yet */
+.ek-shot {
+  display: block;
+  margin: 1.6em 0;
+  padding: 2.4rem 1rem;
+  border: 1px dashed var(--md-default-fg-color--lighter);
+  border-radius: .3rem;
+  background: var(--md-code-bg-color);
+  color: var(--md-default-fg-color--light);
+  font-size: .68rem;
+  text-align: center;
+}
+.ek-shot code { font-size: .66rem; }
+
+/* ---------------------------------------------------------------
+   Screenshots
+   --------------------------------------------------------------- */
+
+/* Row of phone screenshots. They are 718x1600, so they need a leash. */
+.md-typeset .ek-phones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.4rem;
+  margin: 1.6em 0;
+}
+.md-typeset .ek-phones figure {
+  margin: 0;
+}
+
+/* Markdown wraps the img in a <p>; drop its margin. */
+.md-typeset .ek-phones figure > p,
+.md-typeset .ek-wide > p {
+  margin: 0;
+  line-height: 0;
+}
+.md-typeset .ek-phones img {
+  width: 100%;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .4rem;
+  background: #fff;
+}
+.md-typeset .ek-phones figcaption {
+  margin-top: .5rem;
+  font-size: .66rem;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--md-default-fg-color--light);
+}
+
+/* A single wide screenshot: portal shots, composites */
+.md-typeset .ek-wide {
+  margin: 1.8em 0;
+}
+.md-typeset .ek-wide img {
+  width: 100%;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .4rem;
+}
+.md-typeset .ek-wide figcaption {
+  margin-top: .6rem;
+  font-size: .68rem;
+  text-align: center;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Screenshots are captured in the light theme, so soften them in dark mode
+   rather than letting them glare. */
+[data-md-color-scheme="slate"] .md-typeset .ek-phones img,
+[data-md-color-scheme="slate"] .md-typeset .ek-wide img {
+  filter: brightness(.86) contrast(1.04);
+  transition: filter .2s;
+}
+[data-md-color-scheme="slate"] .md-typeset .ek-phones img:hover,
+[data-md-color-scheme="slate"] .md-typeset .ek-wide img:hover {
+  filter: none;
+}

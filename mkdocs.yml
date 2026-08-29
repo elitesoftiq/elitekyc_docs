@@ -1,0 +1,135 @@
+site_name: EliteKYC
+site_description: Identity verification for regulated products. SDK, API and back office.
+site_author: EliteSoft
+copyright: Copyright &copy; EliteSoft
+
+theme:
+  name: material
+  language: en
+  logo: assets/img/logo.svg
+  favicon: assets/img/favicon.svg
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Follow system theme
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.smartsymbols
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra:
+  social:
+    - icon: fontawesome/solid/envelope
+      link: mailto:support@elitesoft.iq
+      name: Email support
+    - icon: fontawesome/solid/globe
+      link: https://elitesoft.iq
+      name: elitesoft.iq
+  generator: false
+
+not_in_nav: |
+  assets/img/MANIFEST.md
+
+nav:
+  - Home: index.md
+  - Overview:
+      - What EliteKYC does: overview/what-is-elitekyc.md
+      - How verification works: overview/how-it-works.md
+      - Capabilities: overview/features.md
+      - Architecture: overview/architecture.md
+      - Security and data: overview/security.md
+  - Quickstart: quickstart.md
+  - Mobile SDK:
+      - Overview: sdk/index.md
+      - Install and configure: sdk/installation.md
+      - Launching the flow: sdk/usage.md
+      - Branding and language: sdk/customization.md
+      - Advanced use: sdk/advanced.md
+      - Troubleshooting: sdk/troubleshooting.md
+  - API:
+      - Overview: api/index.md
+      - Authentication: api/authentication.md
+      - Sessions and attempts: api/sessions.md
+      - Flow and schemas: api/flow.md
+      - Documents: api/documents.md
+      - Liveness: api/liveness.md
+      - Records and data: api/records.md
+      - Webhooks: api/webhooks.md
+      - Errors: api/errors.md
+  - Back office:
+      - Overview: portal/index.md
+      - Reviewing records: portal/records.md
+      - Building the flow: portal/schemas.md
+      - Checks and rules: portal/checks.md
+  - Glossary: reference/glossary.md
