@@ -154,9 +154,6 @@ Worth stating so you do not discover it at integration time.
 - No native iOS or Android SDK. The mobile SDK is Flutter. If your app is
   native, you either embed a Flutter module or drive the API yourself.
 - No hosted web verification flow you can link to. The SDK targets your app.
-- No HMAC signature on webhook payloads today. Authenticate the delivery with
-  the per-subscription bearer token, basic auth or API key header instead, and
-  see [Webhooks](../api/webhooks.md#verifying-a-delivery-came-from-us).
 - Document coverage is strongest for Iraq. Other jurisdictions go through the
   general passport handler or a new dedicated handler we build.
 

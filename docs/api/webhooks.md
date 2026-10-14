@@ -370,7 +370,7 @@ recognise and return `2xx` rather than erroring.
 
 ## Verifying a delivery came from us
 
-There is no HMAC payload signature today. Two things to do instead.
+Two things, used together.
 
 **Authenticate the request.** Configure bearer, basic or API-key auth on the
 subscription and reject deliveries that do not carry it. Combine with an IP
@@ -405,8 +405,6 @@ with.
 
     `GET /core/records/{id}/checks` gives richer detail but needs a session
     token, so it costs the same event plus an extra call.
-
-If you need cryptographic proof of origin instead, raise it during scoping.
 
 ---
 

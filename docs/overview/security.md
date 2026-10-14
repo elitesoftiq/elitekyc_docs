@@ -99,12 +99,11 @@ You choose how a delivery authenticates itself to your endpoint: bearer token,
 basic auth, an API key in a header you name, or custom headers. Configured per
 subscription in the back office.
 
-There is no HMAC payload signature today. If you need cryptographic proof of
-origin rather than a shared secret, say so during scoping. In the meantime,
-treat the webhook as a *notification* rather than as data: before acting, read
-the record's current status back with `POST /core/sessions/start` using your
-API key. A forged payload then cannot make you act on a status the server does
-not agree with, which holds regardless of what signing exists.
+Reject any delivery that does not carry the credential you configured. For
+anything that moves money or grants access, also treat the webhook as a
+*notification* rather than as data: before acting, read the record's current
+status back with `POST /core/sessions/start` using your API key. A forged
+payload then cannot make you act on a status the server does not agree with.
 
 See [Webhooks](../api/webhooks.md#verifying-a-delivery-came-from-us).
 
