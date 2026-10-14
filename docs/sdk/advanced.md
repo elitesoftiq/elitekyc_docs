@@ -83,17 +83,17 @@ sequenceDiagram
     participant App as Your app
     participant EK as EliteKYC
 
-    You->>App: deep link with the change-request secret
-    App->>EK: POST /flow/change-request/verify {secret}
-    EK-->>App: record id, required document types,<br/>fresh session token
+    You->>EK: POST /core/sessions/start {uid}
+    EK-->>You: session token
+    You->>App: notify the customer, hand over the token
     App->>App: startKyc with useCaseStep = documents
     App->>EK: submit the replacement documents
     Note over EK: back to Submitted, checks rerun
 ```
 
-The secret comes from the webhook. Verifying it returns a session token scoped
-to that change request, so the customer cannot use the link to reopen anything
-else. See [Flow and schemas](../api/flow.md#verify-a-document-change-request).
+Start the session with the same `uid` as the original record. The flow
+returns status `DocumentUpdate` with only the rejected documents listed, so the
+customer cannot reopen anything else.
 
 ## Standalone liveness
 

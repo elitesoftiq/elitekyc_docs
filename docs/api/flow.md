@@ -1,7 +1,6 @@
 # Flow and schemas
 
-The customer-facing journey. Session token on everything except change-request
-verification.
+The customer-facing journey. Every endpoint here takes a session token.
 
 These endpoints exist so you can render the flow yourself. If you use the SDK,
 it calls all of them and you never touch this page.
@@ -232,62 +231,6 @@ Answers wrapped in an `information` object and keyed by field `name`.
 ```
 
 **`204`** on success.
-
----
-
-## Verify a document change request
-
-<span class="ek-m post">POST</span> <span class="ek-path">/flow/change-request/verify</span> <span class="ek-auth">no auth</span>
-
-Exchanges a change-request secret for a scoped session. This is how a customer
-whose documents were rejected gets back in without redoing the whole flow.
-
-### Request
-
-```json
-{
-  "secret": "3f9a2b1c8d7e6f5a4b3c2d1e0f9a8b7c"
-}
-```
-
-The secret reaches you in the
-[`RecordPendingUserUpdate`](webhooks.md#recordpendinguserupdate) webhook, or
-from
-[international transaction access](records.md#request-international-transaction-access).
-You deliver it to the customer, typically as a deep link.
-
-### Response `200`
-
-```json
-{
-  "record": {
-    "id": "01H1W1DE6X9Z5YEP5Y8DHR3H7J",
-    "info": [
-      {
-        "comment": "Photo is unreadable",
-        "document_type_id": "01H1W1DF8K2M3N4P5Q6R7S8T9V",
-        "rejection_reason_id": "01H1W1DG9L3N4P5Q6R7S8T9V0W"
-      }
-    ]
-  },
-  "session": {
-    "id": "01H1W1DG9L3N4P5Q6R7S8T9V0W",
-    "token": "eyJhbGciOiJIUzI1NiIs...",
-    "expires_at": "2026-08-26T12:30:00Z"
-  }
-}
-```
-
-The token is scoped to this change request. `record.info` lists exactly what
-needs resubmitting, with the reviewer's comment on each.
-
-### Response `400`
-
-`DocumentManagement.DocumentResubmission.InvalidSecret` when the secret is
-wrong or expired.
-
-The secret is the credential here, so treat it like one. Deliver it over a
-channel you control, and expect it to be single-purpose and time-limited.
 
 ---
 

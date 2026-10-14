@@ -41,8 +41,8 @@ by the server.
 
 A scoped request for the customer to resubmit specific documents. Created when
 a reviewer rejects a document, or when a capability like international
-transfers needs a document that is not on file. Carries a secret the customer
-exchanges for a scoped session token.
+transfers needs a document that is not on file. The customer fulfils it in a
+normal session, which shows only the requested documents.
 
 ### Decision
 

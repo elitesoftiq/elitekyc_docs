@@ -72,7 +72,6 @@ The error's type decides the HTTP status.
 
 | Code | Status | Meaning |
 |------|:------:|---------|
-| `DocumentManagement.DocumentResubmission.InvalidSecret` | 400 | The secret is wrong or expired. |
 | `DocumentManagement.DocumentResubmission.InvalidCustomerInformation` | 400 | The customer details do not match. |
 | `DocumentManagement.DocumentChangeRequestNotFound` | 400 | No such change request. |
 | `DocumentManagement.DocumentChangeRequestMismatch` | 400 | The change request does not belong to this record. |

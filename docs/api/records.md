@@ -160,9 +160,6 @@ record and run the checks.
         "document_number": "A1234567",
         "expiration_date": "2031-08-26",
         "country": "US"
-      },
-      "checks": {
-        "DocumentExpirationCheck": { "passed": true, "score": 0.98 }
       }
     }
   ],
@@ -175,10 +172,7 @@ record and run the checks.
     "selfie": "<required base64 image>"
   },
   "checks": {
-    "expiration": true,
-    "classification": true,
-    "liveness": true,
-    "face_match": true
+    "liveness": true
   }
 }
 ```
@@ -186,14 +180,13 @@ record and run the checks.
 | Section | Purpose |
 |---------|---------|
 | `record` | Identity fields and an optional face image. |
-| `documents` | Images, extracted data, and any check results you already have. |
+| `documents` | Images and extracted data. |
 | `information` | Free-form metadata stored on the record. |
 | `attachments` | The selfie. Required. |
-| `checks` | Which checks *we* should run. Anything true here is evaluated on our side. |
+| `checks` | `liveness: true` also runs a liveness check on the selfie. |
 
-The `checks` flags matter. Set one true and we run that check ourselves rather
-than trusting yours. Set it false and we take the result you supplied in
-`documents[].checks`.
+Document checks always run on our side, using the checks configured for your
+tenant. We do not accept check results from the caller.
 
 ### Response `200`
 
@@ -256,8 +249,8 @@ International transfers typically need a passport, and a customer verified with
 a national ID does not have one on file.
 
 Rather than making you build the "ask for one more document" flow yourself,
-this endpoint checks and, when needed, creates the change request and hands you
-the secret to send the customer into the SDK's resubmission flow.
+this endpoint checks and, when needed, creates the change request. Then start a
+session for the customer and the SDK asks only for the missing documents.
 
 ### Response `200`
 
@@ -270,7 +263,6 @@ the secret to send the customer into the SDK's resubmission flow.
       "redirect_to_kyc": false,
       "selfie_verification_required": false,
       "document_change_request_id": null,
-      "document_change_request_secret": null,
       "required_document_types": []
     }
     ```
@@ -286,12 +278,11 @@ the secret to send the customer into the SDK's resubmission flow.
       "redirect_to_kyc": true,
       "selfie_verification_required": true,
       "document_change_request_id": "01H1W1DJ4R8T9V0W1X2Y3Z4A5B",
-      "document_change_request_secret": "3f9a2b1c8d7e6f5a4b3c2d1e0f9a8b7c",
       "required_document_types": ["IQ_PASSPORT"]
     }
     ```
 
-    Send the customer into the SDK with the secret. See
+    Start a session for the customer. See
     [document resubmission](../sdk/advanced.md#document-resubmission).
 
 The change request is created or reused, so calling this repeatedly does not

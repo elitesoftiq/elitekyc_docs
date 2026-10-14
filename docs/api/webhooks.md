@@ -223,9 +223,8 @@ Specific documents were rejected. The customer resubmits only those.
 }
 ```
 
-`eventable_id` is the document change request id, lowercased. Use it to fetch
-the change-request secret and build the deep link that sends the customer back
-into the SDK. See
+`eventable_id` is the document change request id, lowercased. To send the
+customer back into the SDK, start a session for the same `uid`. See
 [document resubmission](../sdk/advanced.md#document-resubmission).
 
 The `documents` array tells the customer exactly what to fix. Show

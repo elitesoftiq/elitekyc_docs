@@ -133,9 +133,9 @@ sequenceDiagram
 
     Rev->>API: reject the passport, reason "photo unreadable"
     API-->>You: webhook RecordPendingUserUpdate<br/>with the rejected documents and reasons
-    You->>App: notify the customer
-    App->>API: POST /flow/change-request/verify with the secret
-    API-->>App: fresh session token, scoped to those documents
+    You->>API: start a session for the same customer
+    API-->>You: session token
+    You->>App: notify the customer, hand over the token
     App->>App: SDK opens at the documents step only
     App->>API: resubmit the passport
     Note over API: back to Submitted, checks rerun

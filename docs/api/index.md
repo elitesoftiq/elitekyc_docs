@@ -8,7 +8,6 @@ can do, you can do yourself.
 | Environment | Base URL |
 |-------------|----------|
 | Demo | `https://ekyc.demo.elitesoft.iq` |
-| Staging | `https://ekyc.stg.elitesoft.iq` |
 | Production | Issued with your credentials |
 
 All paths in these docs are relative to `/api`. `POST /core/sessions/start`
@@ -83,12 +82,9 @@ on `Code`. See [Errors](errors.md).
 
 ## Interactive reference
 
-The service publishes OpenAPI, and Swagger UI is available on non-production
-environments at `/swagger`. Every endpoint carries a description, an example
-request and example responses.
-
-- Demo: [ekyc.demo.elitesoft.iq/swagger](https://ekyc.demo.elitesoft.iq/swagger)
-- Staging: [ekyc.stg.elitesoft.iq/swagger](https://ekyc.stg.elitesoft.iq/swagger)
+The service publishes OpenAPI. Onboarded tenants get access to the Swagger UI,
+where every endpoint carries a description, an example request and example
+responses.
 
 Use these pages for how the endpoints fit together, and Swagger for the
 exhaustive schema of any single one.
@@ -116,7 +112,6 @@ exhaustive schema of any single one.
 | <span class="ek-m get">GET</span> | `/flow/documents` | Session | [Flow](flow.md#documents-schema) |
 | <span class="ek-m get">GET</span> | `/flow/information` | Session | [Flow](flow.md#information) |
 | <span class="ek-m post">POST</span> | `/flow/information` | Session | [Flow](flow.md#information) |
-| <span class="ek-m post">POST</span> | `/flow/change-request/verify` | None | [Flow](flow.md#verify-a-document-change-request) |
 
 ### Documents
 

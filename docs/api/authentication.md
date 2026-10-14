@@ -151,9 +151,7 @@ session from your backend.
 
 ## Unauthenticated endpoints
 
-One: `POST /flow/change-request/verify`. It takes a change-request secret that
-we generated and you delivered to the customer, and it exchanges that secret
-for a scoped session token. The secret is the credential.
+None. Every endpoint takes either the API key or a session token.
 
 ## Failure modes
 

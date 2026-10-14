@@ -127,9 +127,7 @@ return another tenant's rows. The tenant is resolved from the authenticated
 credential, before any handler runs.
 
 Background workers have no tenant context, because they process every tenant's
-work. They use explicitly named repository methods that bypass the filter, so
-crossing the tenant boundary is always a deliberate, greppable act rather than
-an omission.
+work. Crossing the tenant boundary there is always explicit, never an omission.
 
 ## Storage
 
@@ -141,15 +139,9 @@ an omission.
 
 ## Deployment
 
-Containerised, deployed to DigitalOcean with images published to GitHub
-Container Registry, promoted through development, staging, demo and production.
-Health checks are exposed at `/health` and cover database reachability.
-
-Observability is Serilog to console and Seq, Sentry for errors and traces, and
-New Relic for application performance. Business events are separately recorded
-as record history, which is what compliance reads. The two are deliberately
-distinct: logs are for engineers and expire, history is for auditors and does
-not.
+Containerised and promoted through separate environments up to production.
+Technical logs and business events are kept apart: logs are for engineers and
+expire, record history is for auditors and does not.
 
 ## What this means for your integration
 
